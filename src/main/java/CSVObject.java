@@ -12,13 +12,14 @@ public class CSVObject {
     private String q10;
     private String[] q11;
     private String q12;
+    private String q13;
     private String gender;
     private String age;
     private String education;
     private String citySize;
 
     public CSVObject(String dateTime, String q1, String q2, String q3, String q4, String q5, String q6,
-                     String q7, String q8, String q9, String q10, String q11, String q12,
+                     String q7, String q8, String q9, String q10, String q11, String q12, String q13,
                      String gender, String age, String education, String citySize) {
         this.dateTime = dateTime;
         this.q1 = q1.split(";");
@@ -33,6 +34,7 @@ public class CSVObject {
         this.q10 = q10;
         this.q11 = q11.split(";");
         this.q12 = q12;
+        this.q13 = q13;
         this.gender = gender;
         this.age = age;
         this.education = education;
