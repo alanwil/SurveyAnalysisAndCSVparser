@@ -6,6 +6,7 @@ import org.jfree.data.general.DefaultPieDataset;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -17,18 +18,27 @@ public class Main {
         for (String[] entry: reader.getEntries()) {
             list.add(parser.cvsParse(entry));
         }
+//        Filter filter = new Filter(list);
+//        List<CSVObject> filtered = filter.filterByAge(3);
+//        System.out.println(filtered.size());
 
-        DefaultPieDataset pieDataSet = new DefaultPieDataset();
-        pieDataSet.setValue("Value 1", 20);
-        pieDataSet.setValue("Value 2", 30);
-        pieDataSet.setValue("Value 3", 50);
+        AnswerFilter af = new AnswerFilter();
+        list = af.q1Matcher(list, 1,2);
 
-        JFreeChart chart = ChartFactory.createPieChart("Pie chart", pieDataSet,true,true,false);
-
-        try {
-            ChartUtils.saveChartAsJPEG(new File("src\\main\\resources\\piechart.jpeg"), chart, 500, 300);
-        } catch (Exception e){
-            System.out.println(e.getMessage());
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(Arrays.toString(list.get(i).getQ1()));
         }
+//        DefaultPieDataset pieDataSet = new DefaultPieDataset();
+//        pieDataSet.setValue("Value 1", 20);
+//        pieDataSet.setValue("Value 2", 30);
+//        pieDataSet.setValue("Value 3", 50);
+//
+//        JFreeChart chart = ChartFactory.createPieChart("Pie chart", pieDataSet,true,true,false);
+//
+//        try {
+//            ChartUtils.saveChartAsJPEG(new File("src\\main\\resources\\piechart.jpeg"), chart, 500, 300);
+//        } catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
     }
 }
