@@ -11,7 +11,7 @@ public class CSVObject {
     private String q9;
     private String q10;
     private String[] q11;
-    private String q12;
+    private String[] q12;
     private String q13;
     private String gender;
     private String age;
@@ -33,7 +33,7 @@ public class CSVObject {
         this.q9 = q9;
         this.q10 = q10;
         this.q11 = q11.split(";");
-        this.q12 = q12;
+        this.q12 = q12.split(";");
         this.q13 = q13;
         this.gender = gender;
         this.age = age;
@@ -89,7 +89,7 @@ public class CSVObject {
         return q11;
     }
 
-    public String getQ12() {
+    public String[] getQ12() {
         return q12;
     }
 
