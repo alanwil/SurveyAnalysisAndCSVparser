@@ -93,6 +93,10 @@ public class CSVObject {
         return q12;
     }
 
+    public String getQ13() {
+        return q13;
+    }
+
     public String getGender() {
         return gender;
     }
@@ -108,4 +112,5 @@ public class CSVObject {
     public String getCitySize() {
         return citySize;
     }
+
 }
