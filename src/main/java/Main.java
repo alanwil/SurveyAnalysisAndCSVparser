@@ -12,6 +12,6 @@ public class Main {
             list.add(parser.cvsParse(entry));
         }
 
-        
+
     }
 }
