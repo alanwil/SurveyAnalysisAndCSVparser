@@ -1,9 +1,13 @@
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.PieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.Map;
 
 public class PieChartBuilder {
@@ -22,6 +26,9 @@ public class PieChartBuilder {
         }
 
         JFreeChart chart = ChartFactory.createPieChart(question, pieDataSet,true,true,false);
+        PieSectionLabelGenerator label = new StandardPieSectionLabelGenerator("{2}", new DecimalFormat("0"), new DecimalFormat("0.0%"));
+        PiePlot plot = (PiePlot) chart.getPlot();
+        plot.setLabelGenerator(label);
 
         StringBuilder path = new StringBuilder("src\\main\\resources\\");
         path.append(name);
