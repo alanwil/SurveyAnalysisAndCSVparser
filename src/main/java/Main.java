@@ -18,16 +18,22 @@ public class Main {
         for (String[] entry: reader.getEntries()) {
             list.add(parser.cvsParse(entry));
         }
+
+        AnswerCounter ac = new AnswerCounter();
+        ac.q1(list);
+        System.out.println(ac.getQuestion());
+        System.out.println(ac.getStats());
+
 //        Filter filter = new Filter(list);
 //        List<CSVObject> filtered = filter.filterByAge(3);
 //        System.out.println(filtered.size());
 
-        AnswerFilter af = new AnswerFilter();
-        list = af.q1Matcher(list, 1,2);
-
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(Arrays.toString(list.get(i).getQ1()));
-        }
+//        AnswerFilter af = new AnswerFilter();
+//        list = af.q1Matcher(list, 1,2);
+//
+//        for (int i = 0; i < list.size(); i++) {
+//            System.out.println(Arrays.toString(list.get(i).getQ1()));
+//        }
 //        DefaultPieDataset pieDataSet = new DefaultPieDataset();
 //        pieDataSet.setValue("Value 1", 20);
 //        pieDataSet.setValue("Value 2", 30);
