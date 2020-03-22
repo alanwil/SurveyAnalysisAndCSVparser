@@ -1,7 +1,12 @@
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtils;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.CategoryLabelPosition;
+import org.jfree.chart.axis.CategoryLabelPositions;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import java.io.File;
@@ -24,15 +29,17 @@ public class BarChartBuilder {
 
         JFreeChart chart = ChartFactory.createBarChart(question, "", "%", dataSet,
                                                     PlotOrientation.VERTICAL,false,true,false);
-//        PieSectionLabelGenerator label = new StandardPieSectionLabelGenerator("{2}", new DecimalFormat("0"), new DecimalFormat("0.0%"));
-//        PiePlot plot = (PiePlot) chart.getPlot();
-//        plot.setLabelGenerator(label);
+
+        CategoryPlot plot = chart.getCategoryPlot();
+        CategoryAxis catAxis = plot.getDomainAxis();
+        catAxis.setMaximumCategoryLabelLines(3);
+        catAxis.setCategoryLabelPositions(CategoryLabelPositions.createUpRotationLabelPositions(1.1));
 
         StringBuilder path = new StringBuilder("src\\main\\resources\\");
         path.append(name);
         path.append(".jpeg");
         try {
-            ChartUtils.saveChartAsJPEG(new File(path.toString()), chart, 800, 500);
+            ChartUtils.saveChartAsJPEG(new File(path.toString()), chart, 800, 700);
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
